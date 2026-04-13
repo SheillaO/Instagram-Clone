@@ -644,3 +644,7 @@ function showAnalytics(username) {
     );
 }
 
+
+// ---------------- INITIAL RENDER ----------------
+renderPosts();
+

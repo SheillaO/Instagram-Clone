@@ -110,3 +110,29 @@ const posts = [
     liked: false,
   },
 ];
+
+// ---------------- RANDOM USERNAME ----------------
+function generateRandomUsername() {
+    const firstNames = [
+        "Chris Farley", "Beyoncé Knowles", "Sabrina Carpenter", "Kenan Thompson",
+        "Kate McKinnon", "Bill Hader", "Aidy Bryant", "Adam Sandler",
+        "Ryan Reynolds", "Emma Stone", "Scarlett Johansson", "John Mulaney",
+        "Will Ferrell", "Amy Poehler", "Jason Sudeikis", "Tom Hanks",
+        "Meryl Streep", "Leonardo DiCaprio", "Robert Downey Jr", "Jennifer Lawrence",
+        "Brad Pitt", "Angelina Jolie", "Zendaya Coleman", "Timothée Chalamet",
+        "Margot Robbie", "Chinua Achebe", "Wole Soyinka", "Naguib Mahfouz",
+        "Ngugi wa Thiong'o", "Fela Kuti", "Angelique Kidjo", "Youssou N'Dour",
+        "Salif Keita", "Miriam Makeba", "Oumou Sangaré", "Nelson Mandela",
+        "Kwame Nkrumah", "Julius Nyerere", "Jomo Kenyatta", "Thomas Sankara",
+        "Patrice Lumumba", "Samora Machel", "Haile Selassie", "Paul Kagame",
+        "Didier Drogba", "Samuel Eto'o", "Yaya Touré", "Sadio Mané",
+        "Mohamed Salah", "Riyad Mahrez", "Victor Osimhen", "Michael Essien",
+        "Jay-Jay Okocha", "Asamoah Gyan", "Viola Davis", "Idris Elba",
+        "Anya Taylor-Joy", "Florence Pugh", "Henry Cavill", "Gal Gadot",
+        "Pedro Pascal", "Andrew Garfield", "Emma Watson", "Daniel Kaluuya",
+        "Lupita Nyong'o", "Chadwick Boseman", "Lakeith Stanfield", "Zoe Saldaña",
+        "Robert Pattinson", "Kristen Stewart", "Donald Glover", "Sydney Sweeney",
+        "Jacob Elordi", "Billie Eilish", "Harry Styles", "Bad Bunny",
+        "Doja Cat", "The Weeknd", "Lizzo", "Ariana Grande",
+        "Kendrick Lamar", "Travis Scott", "Nicki Minaj"
+    ];

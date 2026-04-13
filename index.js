@@ -274,3 +274,18 @@ function generateRandomUsername() {
   return `${first.replaceAll(" ", "").toLowerCase()}_${last.toLowerCase()}${randomNumber}`;
 }
 
+
+// ---------------- RANDOM COMMENTS ----------------
+function getRandomComments() {
+    const shuffled = [...commentPool].sort(() => 0.5 - Math.random());
+    const count = Math.floor(Math.random() * 4) + 2;
+
+    return shuffled.slice(0, count).map(text => ({
+        user: generateRandomUsername(),
+        text: text,
+        time: Date.now() - Math.floor(Math.random() * 1000000),
+        liked: false
+    }));
+}
+
+

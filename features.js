@@ -130,13 +130,13 @@ function renderStories() {
 }
   
 function viewStory(user) {
-    // Mark as viewed
-    viewedStories.add(user.name);
-    sessionStorage.setItem("viewedStories", JSON.stringify([...viewedStories]));
- 
-    // Create fullscreen overlay
-    const overlay = document.createElement("div");
-    overlay.style.cssText = `
+  // Mark as viewed
+  viewedStories.add(user.name);
+  sessionStorage.setItem("viewedStories", JSON.stringify([...viewedStories]));
+
+  // Create fullscreen overlay
+  const overlay = document.createElement("div");
+  overlay.style.cssText = `
         position: fixed;
         inset: 0;
         background: black;
@@ -147,4 +147,87 @@ function viewStory(user) {
         justify-content: center;
     `;
 
-    
+  // Progress bar
+  const progress = document.createElement("div");
+  progress.style.cssText = `
+        position: absolute;
+        top: 12px;
+        left: 16px;
+        right: 16px;
+        height: 3px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 3px;
+        overflow: hidden;
+    `;
+  const progressFill = document.createElement("div");
+  progressFill.style.cssText = `
+        height: 100%;
+        width: 0%;
+        background: white;
+        border-radius: 3px;
+        transition: width 3s linear;
+    `;
+  progress.appendChild(progressFill);
+
+  // User info row
+  const userRow = document.createElement("div");
+  userRow.style.cssText = `
+        position: absolute;
+        top: 28px;
+        left: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    `;
+  userRow.innerHTML = `
+        <img src="${user.avatar}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid white;">
+        <span style="color:white;font-weight:600;font-size:14px;">${user.name}</span>
+        <span style="color:rgba(255,255,255,0.7);font-size:12px;">Just now</span>
+    `;
+
+  // Post image as "story"
+  const img = document.createElement("img");
+  const postData = posts.find((p) => p.username === user.name);
+  img.src = postData ? postData.post : user.avatar;
+  img.style.cssText = `
+        max-width: 100%;
+        max-height: 100vh;
+        object-fit: contain;
+    `;
+
+  // Close button
+  const closeBtn = document.createElement("span");
+  closeBtn.textContent = "✕";
+  closeBtn.style.cssText = `
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 10000;
+    `;
+  closeBtn.onclick = () => {
+    overlay.remove();
+    renderStories(); // refresh ring colours
+  };
+
+  overlay.appendChild(progress);
+  overlay.appendChild(userRow);
+  overlay.appendChild(img);
+  overlay.appendChild(closeBtn);
+  document.body.appendChild(overlay);
+
+  // Animate progress bar and auto-close after 3s
+  requestAnimationFrame(() => {
+    progressFill.style.width = "100%";
+  });
+  setTimeout(() => {
+    overlay.remove();
+    renderStories();
+  }, 3000);
+}
+
+// Kick off stories bar
+renderStories();
+ 

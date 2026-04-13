@@ -487,4 +487,18 @@ function renderPosts() {
 
     feed.innerHTML += postHTML;
   }
-}     
+}    
+
+
+// ---------------- LIKE POST ----------------
+function toggleLike(username) {
+    for (let post of posts) {
+        if (post.username === username) {
+            post.liked = !post.liked;
+            post.likes += post.liked ? 1 : -1;
+        }
+    }
+    renderPosts();
+}
+
+

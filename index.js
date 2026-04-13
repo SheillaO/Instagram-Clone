@@ -558,3 +558,65 @@ function focusComment(username) {
     }
 }
 
+// ---------------- SHARE POST ----------------
+function sharePost(username) {
+    const text = `Check out ${username}'s post!`;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Post link copied to clipboard 📋");
+    }).catch(() => {
+        alert("Could not copy to clipboard.");
+    });
+}
+
+
+// ---------------- ENTER KEY SUPPORT ----------------
+function handleEnter(event, username) {
+    if (event.key === "Enter") {
+        addComment(username);
+    }
+}
+
+// ---------------- DOUBLE TAP HEART ANIMATION ----------------
+let lastTap = 0;
+
+function createHeartAnimation(event, username) {
+    const currentTime = Date.now();
+    const tapLength = currentTime - lastTap;
+
+    if (tapLength < 300 && tapLength > 0) {
+        // Double tap detected!
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.style.position = "fixed";
+        heart.style.fontSize = "80px";
+        heart.style.left = (event.clientX - 40) + "px";
+        heart.style.top = (event.clientY - 40) + "px";
+        heart.style.zIndex = "1000";
+        heart.style.pointerEvents = "none";
+        heart.style.animation = "heartPop 0.6s ease-out forwards";
+
+        if (!document.getElementById("heart-animation-style")) {
+            const style = document.createElement("style");
+            style.id = "heart-animation-style";
+            style.textContent = `
+                @keyframes heartPop {
+                    0%   { transform: scale(0); opacity: 1; }
+                    50%  { transform: scale(1.2); opacity: 1; }
+                    100% { transform: scale(0); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 600);
+
+        // Like the post on double tap
+        toggleLike(username);
+    }
+
+    lastTap = currentTime;
+}
+
+
+

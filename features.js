@@ -28,3 +28,47 @@ const storyUsers = [
     { name: "davinci1452",    avatar: "images/avatar-davinci.png"  },
     { name: "fridakahlo1907", avatar: "images/avatar-frida.png"    },
 ];
+
+// Track which stories have been viewed this session
+const viewedStories = new Set(
+    JSON.parse(sessionStorage.getItem("viewedStories") || "[]")
+);
+ 
+function renderStories() {
+    // Remove any existing stories bar first
+    const existing = document.getElementById("stories-bar");
+    if (existing) existing.remove();
+ 
+    const bar = document.createElement("div");
+    bar.id = "stories-bar";
+    bar.style.cssText = `
+        background: white;
+        border-bottom: 1px solid #DBDBDB;
+        padding: 12px 0;
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-left: 16px;
+        padding-right: 16px;
+    `;
+    // Hide scrollbar for webkit
+    const scrollStyle = document.createElement("style");
+    scrollStyle.textContent = `#stories-bar::-webkit-scrollbar { display: none; }`;
+    document.head.appendChild(scrollStyle);
+ 
+    storyUsers.forEach(user => {
+        const viewed = viewedStories.has(user.name);
+ 
+        const item = document.createElement("div");
+        item.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+        `;
+ 
+        const ring = document.createElement("div");

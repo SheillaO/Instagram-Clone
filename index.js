@@ -304,3 +304,28 @@ function initComments() {
 }
 
 initComments();
+
+// ---------------- FEED ----------------
+const feed = document.getElementById("feed");
+
+if (!feed) {
+    console.error("Feed element not found. Make sure you have <div id='feed'></div> in your HTML.");
+}
+
+
+// ---------------- NEW TO YOU FILTER ----------------
+let showOnlyNew = false;
+
+function toggleNewFilter() {
+    showOnlyNew = !showOnlyNew;
+    renderPosts();
+
+    const filterBtn = document.getElementById("new-filter-btn");
+    if (filterBtn) {
+        filterBtn.textContent = showOnlyNew ? "✨ Showing New" : "✨ New to You";
+        filterBtn.style.background = showOnlyNew
+            ? "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF)"
+            : "#EFEFEF";
+        filterBtn.style.color = showOnlyNew ? "white" : "#262626";
+    }
+}

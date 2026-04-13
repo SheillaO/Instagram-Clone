@@ -60,3 +60,22 @@ function showAnalytics(username) {
     // Sentiment breakdown: Positive, Mixed, Neutral
 }
 ```
+**Transparency:** Creators see exactly how their content performs without mystery algorithms.
+
+### 😊 Comment Sentiment Analysis
+```javascript
+function analyzeSentiment(text) {
+    // Analyzes 12+ positive/negative keywords
+    // Returns: 😊 Positive, 😐 Mixed, or 😌 Neutral
+}
+```
+**Use case:** Quickly gauge audience reaction without reading 200+ comments.
+
+### 🌓 Dark Mode Toggle
+Respects user preference, persists across sessions via `localStorage`.
+
+### 📖 Stories Feature
+- Instagram-style stories with progress bar
+- Session-based view tracking
+- Auto-advance after 3 seconds
+

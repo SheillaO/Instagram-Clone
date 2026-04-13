@@ -12,3 +12,56 @@ body {
     max-width: 470px;
     margin: 0 auto;
 }
+
+/* ========== HEADER ========== */
+.hero {
+    background: white;
+    border-bottom: 1px solid #DBDBDB;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 8px 0;
+}
+
+.hero .container {
+    max-width: 470px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.instagram {
+    width: 105px;
+    height: auto;
+}
+
+/* ========== FEED ========== */
+#feed {
+    max-width: 470px;
+    margin: 0 auto;
+}
+
+/* ========== POST CARD ========== */
+.post {
+    background: white;
+    border: 1px solid #DBDBDB;
+    margin-bottom: 24px;
+}
+
+/* ========== POST HEADER ========== */
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+}
+
+.post-header .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
+    padding: 2px;
+    cursor: pointer;
+}

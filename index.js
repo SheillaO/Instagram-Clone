@@ -358,44 +358,44 @@ function timeAgo(timestamp) {
 
 // ---------------- RENDER POSTS ----------------
 function renderPosts() {
-    if (!feed) return;
+  if (!feed) return;
 
-    feed.innerHTML = "";
+  feed.innerHTML = "";
 
-    // Filter button
-    feed.innerHTML = `
+  // Filter button
+  feed.innerHTML = `
         <div style="background: white; padding: 12px 16px; border-bottom: 1px solid #DBDBDB; text-align: center;">
             <button 
                 id="new-filter-btn"
                 onclick="toggleNewFilter()"
-                style="padding: 8px 20px; border-radius: 8px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: ${showOnlyNew ? 'linear-gradient(45deg, #F58529, #DD2A7B, #8134AF)' : '#EFEFEF'}; color: ${showOnlyNew ? 'white' : '#262626'};"
+                style="padding: 8px 20px; border-radius: 8px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: ${showOnlyNew ? "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF)" : "#EFEFEF"}; color: ${showOnlyNew ? "white" : "#262626"};"
             >
                 ${showOnlyNew ? "✨ Showing New" : "✨ New to You"}
             </button>
         </div>
     `;
-     const postsToShow = showOnlyNew ? posts.filter(p => !p.liked) : posts;
+  const postsToShow = showOnlyNew ? posts.filter((p) => !p.liked) : posts;
 
-    if (postsToShow.length === 0 && showOnlyNew) {
-        feed.innerHTML += `
+  if (postsToShow.length === 0 && showOnlyNew) {
+    feed.innerHTML += `
             <div style="text-align: center; padding: 40px 20px; color: #8E8E8E;">
                 <p style="font-size: 24px; margin-bottom: 8px;">🎉</p>
                 <p style="font-size: 16px; font-weight: 600;">You've seen everything!</p>
                 <p style="font-size: 14px;">Check back later for new content</p>
             </div>
         `;
-        return;
-    }
+    return;
+  }
 
-    for (let post of postsToShow) {
-        const heartIcon = post.liked
-            ? "images/icon-heart-filled.png"
-            : "images/icon-heart.png";
+  for (let post of postsToShow) {
+    const heartIcon = post.liked
+      ? "images/icon-heart-filled.png"
+      : "images/icon-heart.png";
 
-        const comments = commentsStore[post.username] || [];
-        const sentiment = analyzeSentiment(comments.map(c => c.text).join(" "));
+    const comments = commentsStore[post.username] || [];
+    const sentiment = analyzeSentiment(comments.map((c) => c.text).join(" "));
 
-        const postHTML = `
+    const postHTML = `
             <section class="post">
                 <div class="post-header">
                     <img src="${post.avatar}" class="avatar">
@@ -408,4 +408,83 @@ function renderPosts() {
                     </div>
                 </div>
 
-                
+           
+                <img 
+                    src="${post.post}" 
+                    class="post-img"
+                    onclick="createHeartAnimation(event, '${post.username}')"
+                >
+
+                <div class="post-footer">
+                    <div class="icons">
+                        <img 
+                            src="${heartIcon}" 
+                            class="icon ${post.liked ? "liked" : ""}"
+                            onclick="toggleLike('${post.username}')"
+                        >
+                        <img 
+                            src="images/icon-comment.png" 
+                            class="icon"
+                            onclick="focusComment('${post.username}')"
+                        >
+                        <img 
+                            src="images/icon-dm.png" 
+                            class="icon"
+                            onclick="sharePost('${post.username}')"
+                        >
+                        <span style="margin-left: auto; cursor: pointer; font-size: 20px;" onclick="showAnalytics('${post.username}')" title="View Analytics">📊</span>
+                    </div>
+
+                    <p class="likes">${post.likes} likes</p>
+
+                    ${
+                      comments.length > 0
+                        ? `
+                        <p style="font-size: 12px; color: ${sentiment.color}; margin-bottom: 8px;">
+                            ${sentiment.sentiment} vibes
+                        </p>
+                    `
+                        : ""
+                    }
+
+                    <p class="caption">
+                        <strong>${post.username}</strong> ${post.comment}
+                    </p>
+
+                    <div class="comment-box">
+                        <input 
+                            type="text" 
+                            placeholder="Add a comment..."
+                            id="comment-${post.username}"
+                            onkeypress="handleEnter(event, '${post.username}')"
+                        >
+                        <button onclick="addComment('${post.username}')">Post</button>
+                    </div>
+
+                    <div class="comments">
+                        ${comments
+                          .map(
+                            (c, index) => `
+                            <p class="comment">
+                                <span>
+                                    <strong>${c.user}</strong> ${c.text}
+                                    <span class="time">• ${timeAgo(c.time)}</span>
+                                </span>
+                                <span 
+                                    class="comment-like"
+                                    onclick="toggleCommentLike('${post.username}', ${index})"
+                                >
+                                    ${c.liked ? "❤️" : "🤍"}
+                                </span>
+                            </p>
+                        `,
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </section>
+        `;
+
+    feed.innerHTML += postHTML;
+  }
+}     

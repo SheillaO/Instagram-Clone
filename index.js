@@ -136,3 +136,17 @@ function generateRandomUsername() {
         "Doja Cat", "The Weeknd", "Lizzo", "Ariana Grande",
         "Kendrick Lamar", "Travis Scott", "Nicki Minaj"
     ];
+
+      const lastNames = [
+        "Clinton", "Spade", "Obama", "Stiller", "Carell", "Murphy",
+        "De Niro", "DiCaprio", "Pitt", "Gosling", "Hanks", "Clooney",
+        "Washington", "Downey", "Reeves", "Mandela", "Nkrumah", "Nyerere",
+        "Kenyatta", "Sankara", "Lumumba", "Machel", "Selassie", "Kagame",
+        "Jonathan", "Buhari", "Ramaphosa", "Sisi", "Achebe", "Soyinka",
+        "Mahfouz", "Kuti", "Kidjo", "Drogba", "Touré", "Mané", "Salah",
+        "Hawkins", "Fletcher", "Bennett", "Reynolds", "Campbell", "Brooks",
+        "Ellis", "Griffin", "Hayes", "Foster", "Ramirez", "Cook",
+        "Bailey", "Cooper", "Richardson", "Long", "Bell", "Wood",
+        "Sanders", "Price", "Ross", "Morgan", "Bellamy", "Hughes",
+        "Porter", "Gray", "Reed", "Stone"
+    ];

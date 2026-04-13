@@ -1,96 +1,14 @@
-body {
+/* ========== RESET & BASE ========== */
+* {
     margin: 0;
     padding: 0;
-    width: 375px;
-    height: 545px;
-    top: 67px;
-    background-color: #FFFFFF;
+    box-sizing: border-box;
 }
 
-.icon{
-    width: 104.33683013916016;
-height: 22.134628295898438;
-top: 451px;
-left: 10px;
-opacity: 1;
-border-width: 2.33px;
-border: 2.33px solid #000000
-
-}
-
-.comment {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 4px 0;
-    width: 343;
-height: 16;
-top: 513px;
-left: 13px;
-opacity: 1;
-font-family: Source Sans Pro;
-font-weight: 700;
-font-style: Bold;
-font-size: 13px;
-line-height: 100%;
-letter-spacing: 0%;
-
-
-
-
-  
-    
-}
-
-.comment-like {
-    cursor: pointer;
-    font-size: 14px;
-    
-}
-
-.time {
-    color: gray;
-    font-size: 11px;
-    margin-left: 5px;
-}
-
-.liked {
-    filter: brightness(0) saturate(100%) invert(16%) sepia(95%) saturate(7470%) hue-rotate(356deg);
-    transform: scale(1.2);
-    transition: 0.15s ease;
-}
-
-.verified {
-    color: #1DA1F2;
-    font-size: 14px;
-    margin-left: 5px;
-    font-weight: bold;
-}
-
-.instagram{
-    width: 375px;
-    height: 67px;
-    border-bottom: 1px;
-}
-
-.location, .avatar{
-    width: 348px;
-    height: 34px;
-    top: 10px;
-    left: 10px
-}
-
-.post-img{
-    width: 375px;
-    height: 375px;
-    top: 55px;
-}
-
-
-.post-footer{
-    width: 346px;
-    height:78px;
-    top: 451px;
-    left: 10px;
-    color: #000000;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #FAFAFA;
+    color: #262626;
+    max-width: 470px;
+    margin: 0 auto;
 }

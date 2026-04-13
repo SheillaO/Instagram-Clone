@@ -549,4 +549,12 @@ function toggleCommentLike(username, index) {
     renderPosts();
 }
 
+// ---------------- FOCUS COMMENT ----------------
+function focusComment(username) {
+    const input = document.getElementById(`comment-${username}`);
+    if (input) {
+        input.scrollIntoView({ behavior: "smooth", block: "center" });
+        input.focus();
+    }
+}
 

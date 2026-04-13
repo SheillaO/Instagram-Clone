@@ -220,21 +220,21 @@ background: linear-gradient(45deg,
 
 ---
 
-## 📁 Project Structure
+📁 Project Structure
 instagram-clone/
 │
-├── index.html              # Semantic HTML structure
-├── index.css               # Instagram-authentic styling
-├── index.js                # Core app logic (600+ lines)
+├── index.html              # Semantic HTML structure (layout & base UI)
+├── index.css               # Instagram-inspired styling & responsive design
+├── index.js                # Core app logic (feed rendering, likes, comments, localStorage)
+├── features.js             # Advanced features (stories, shuffle, notifications, dark mode)
 │
 └── images/
-├── logo.png
-├── avatar-vangogh.jpg
-├── avatar-davinci.png
-├── post-.jpg          # Artist posts
-└── icon-.png          # UI icons
-
----
+    ├── logo.png
+    ├── avatar-vangogh.jpg
+    ├── avatar-davinci.png
+    ├── avatar-*.png        # Additional user avatars
+    ├── post-*.jpg          # Artist post images
+    └── icon-*.png          # UI icons (like, comment, DM)
 
 ## 🚦 Getting Started
 
@@ -329,11 +329,7 @@ Built after interviewing 30+ Instagram users about pain points.
 ### 4. **Complete Feature Set**
 Stories, analytics, dark mode, sentiment analysis - features found in real social apps.
 
-### 5. **Portfolio Diversity**
-Complements my other projects:
-- **GLP-1 Companion:** Health tech utility app
-- **OldGram:** Social media interaction design
-- Shows range beyond "tutorial projects"
+
 
 ---
 
@@ -341,11 +337,6 @@ Complements my other projects:
 
 **Sheilla O.**  
 Technical Product Marketing Manager | Nairobi, Kenya 🇰🇪
-
-**Journey:**
-- SheCodes Graduate (2023)
-- Scrimba Frontend Developer Program (In Progress)
-- Building for African and global markets
 
 **Philosophy:**
 *"Technology should solve real problems, not create new ones."*
@@ -367,7 +358,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🙏 Acknowledgments
 
 - **Instagram** for design inspiration (and for creating problems to solve)
-- **Scrimba** for teaching me to think like a developer
 - **The OG Instagram** (2010-2015) for showing social media could be simple
 - **Classic artists** for being meme-ready centuries before memes existed
 
@@ -375,7 +365,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Let's Connect
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-purple?style=for-the-badge)](https://your-portfolio-link.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-purple?style=for-the-badge)](https://mysocialappclone.netlify.app/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/sheillaolga/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/SheillaO)
 
@@ -388,8 +378,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 *"Simplicity is the ultimate sophistication."*  
 — Leonardo da Vinci (and my code philosophy)
-
-⭐ **Star this repo if you believe social media should show you NEW content!**
 
 </div>
 

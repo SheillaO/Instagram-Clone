@@ -174,3 +174,22 @@ body {
     font-weight: 600;
     margin-right: 4px;
 }
+
+.time {
+    color: #8E8E8E;
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+.comment-like {
+    cursor: pointer;
+    font-size: 12px;
+    user-select: none;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.comment-like:active {
+    transform: scale(1.3);
+}

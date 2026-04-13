@@ -94,3 +94,15 @@ body {
     cursor: pointer;
     user-select: none;
 }
+
+/* ========== POST FOOTER ========== */
+.post-footer {
+    padding: 0 16px 8px;
+}
+
+/* ========== ICONS ========== */
+.icons {
+    display: flex;
+    gap: 16px;
+    padding: 8px 0;
+}

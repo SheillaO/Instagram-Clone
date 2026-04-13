@@ -501,4 +501,52 @@ function toggleLike(username) {
     renderPosts();
 }
 
+// ---------------- ADD COMMENT ----------------
+function addComment(username) {
+    const input = document.getElementById(`comment-${username}`);
+    if (!input) return;
+
+    const commentText = input.value.trim();
+    if (commentText === "") return;
+
+    const comment = {
+        user: generateRandomUsername(),
+        text: commentText,
+        time: Date.now(),
+        liked: false
+    };
+
+    if (!commentsStore[username]) {
+        commentsStore[username] = [];
+    }
+
+    commentsStore[username].push(comment);
+
+    try {
+        localStorage.setItem("commentsStore", JSON.stringify(commentsStore));
+    } catch (e) {
+        console.warn("Could not save comment to localStorage.", e);
+    }
+
+    input.value = "";
+    renderPosts();
+}
+
+
+// ---------------- COMMENT LIKE ----------------
+function toggleCommentLike(username, index) {
+    const comments = commentsStore[username];
+    if (!comments || !comments[index]) return;
+
+    comments[index].liked = !comments[index].liked;
+
+    try {
+        localStorage.setItem("commentsStore", JSON.stringify(commentsStore));
+    } catch (e) {
+        console.warn("Could not save like to localStorage.", e);
+    }
+
+    renderPosts();
+}
+
 

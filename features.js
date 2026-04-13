@@ -72,3 +72,30 @@ function renderStories() {
         `;
  
         const ring = document.createElement("div");
+
+        ring.style.cssText = `
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            padding: 2px;
+            background: ${viewed
+                ? "#DBDBDB"
+                : "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)"};
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        `;
+ 
+        const img = document.createElement("img");
+        img.src = user.avatar;
+        img.style.cssText = `
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        `;
+ 
+        const label = document.createElement("p");
+
+        

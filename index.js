@@ -329,3 +329,19 @@ function toggleNewFilter() {
         filterBtn.style.color = showOnlyNew ? "white" : "#262626";
     }
 }
+
+// ---------------- SENTIMENT ANALYSIS ----------------
+function analyzeSentiment(text) {
+    const positive = ["love", "great", "amazing", "beautiful", "awesome", "perfect", "best", "wonderful", "fantastic", "art", "energy", "vibes"];
+    const negative = ["hate", "bad", "terrible", "awful", "worst", "boring", "ugly", "chaos", "unhinged", "deceased"];
+
+    const lowerText = text.toLowerCase();
+    let score = 0;
+
+    positive.forEach(word => { if (lowerText.includes(word)) score++; });
+    negative.forEach(word => { if (lowerText.includes(word)) score--; });
+
+    if (score > 0) return { sentiment: "😊 Positive", color: "#00C853" };
+    if (score < 0) return { sentiment: "😐 Mixed", color: "#FF6D00" };
+    return { sentiment: "😌 Neutral", color: "#757575" };
+}

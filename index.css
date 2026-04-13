@@ -216,3 +216,23 @@ body {
 .comment-box input::placeholder {
     color: #8E8E8E;
 }
+
+
+.comment-box button {
+    background: none;
+    border: none;
+    color: #0095F6;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.comment-box button:hover {
+    color: #00376B;
+}
+
+.comment-box button:disabled {
+    color: #B2DFFC;
+    cursor: default;
+}

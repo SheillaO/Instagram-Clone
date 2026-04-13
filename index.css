@@ -250,3 +250,7 @@ body {
     background: #DBDBDB;
     border-radius: 4px;
 }
+
+body.dark-mode .instagram {
+    filter: invert(1) brightness(2);
+}

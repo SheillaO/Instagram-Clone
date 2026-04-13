@@ -1,19 +1,9 @@
-# Getting Started
-Install the dependencies and run the project
-```
-npm install
-npm start
-```
+# 🎨 OldGram - Where Renaissance Meets Gen-Z
 
-Head over to https://vitejs.dev/ to learn more about configuring vite
-## About Scrimba
+> *"What if Van Gogh had WiFi and Leonardo da Vinci dropped Leonardo da Vinci quotes in the comments?"*
 
-At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
-If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
-The Fullstack Developer Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+[![Live Demo](https://img.shields.io/badge/demo-live-ff0069)](https://mysocialappclone.netlify.app)
+[![GitHub](https://img.shields.io/badge/repo-github-8134AF)](https://github.com/SheillaO/Instagram-Clone)
+[![Built For](https://img.shields.io/badge/built_for-humans_who_like_new_content-ffd600)](https://github.com/SheillaO/Instagram-Clone)
 
-- [Our courses](https://scrimba.com/courses)
-- [The Frontend Career Path](https://scrimba.com/fullstack-path-c0fullstack)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
-
-Happy Coding!
+---

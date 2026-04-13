@@ -345,3 +345,32 @@ function analyzeSentiment(text) {
     if (score < 0) return { sentiment: "😐 Mixed", color: "#FF6D00" };
     return { sentiment: "😌 Neutral", color: "#757575" };
 }
+
+// ---------------- TIME AGO ----------------
+function timeAgo(timestamp) {
+    const seconds = Math.floor((Date.now() - timestamp) / 1000);
+
+    if (seconds < 60) return "just now";
+    if (seconds < 3600) return Math.floor(seconds / 60) + " min ago";
+    if (seconds < 86400) return Math.floor(seconds / 3600) + " hr ago";
+    return Math.floor(seconds / 86400) + " days ago";
+}
+
+// ---------------- RENDER POSTS ----------------
+function renderPosts() {
+    if (!feed) return;
+
+    feed.innerHTML = "";
+
+    // Filter button
+    feed.innerHTML = `
+        <div style="background: white; padding: 12px 16px; border-bottom: 1px solid #DBDBDB; text-align: center;">
+            <button 
+                id="new-filter-btn"
+                onclick="toggleNewFilter()"
+                style="padding: 8px 20px; border-radius: 8px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; background: ${showOnlyNew ? 'linear-gradient(45deg, #F58529, #DD2A7B, #8134AF)' : '#EFEFEF'}; color: ${showOnlyNew ? 'white' : '#262626'};"
+            >
+                ${showOnlyNew ? "✨ Showing New" : "✨ New to You"}
+            </button>
+        </div>
+    `;

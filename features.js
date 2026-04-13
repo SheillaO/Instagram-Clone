@@ -128,4 +128,23 @@ function renderStories() {
     document.body.prepend(bar);
   }
 }
+  
+function viewStory(user) {
+    // Mark as viewed
+    viewedStories.add(user.name);
+    sessionStorage.setItem("viewedStories", JSON.stringify([...viewedStories]));
  
+    // Create fullscreen overlay
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
+        position: fixed;
+        inset: 0;
+        background: black;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    

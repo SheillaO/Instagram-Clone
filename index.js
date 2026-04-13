@@ -51,7 +51,7 @@ const posts = [
     avatar: "images/avatar-vangogh.jpg",
     post: "images/post-vangogh.jpg",
     comment: "just took a few mushrooms lol",
-    likes: 21,
+    likes: 9084767,
     liked: false,
   },
   {
@@ -61,7 +61,7 @@ const posts = [
     avatar: "images/avatar-courbet.jpg",
     post: "images/post-courbet.jpg",
     comment: "i'm feelin a bit stressed tbh",
-    likes: 4,
+    likes: 90967,
     liked: false,
   },
   {
@@ -73,7 +73,7 @@ const posts = [
     post: "images/post-ducreux.jpg",
     comment:
       "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-    likes: 152,
+    likes: 1534552,
     liked: false,
   },
   {
@@ -84,7 +84,7 @@ const posts = [
     avatar: "images/avatar-picasso.png",
     post: "images/post-picasso.jpg",
     comment: "I painted it upside down first… then it made sense.",
-    likes: 187,
+    likes: 18907,
     liked: false,
   },
   {
@@ -95,7 +95,7 @@ const posts = [
     avatar: "images/avatar-davinci.png",
     post: "images/post-davinci.png",
     comment: "I sketched 200 ideas today and still wasn't satisfied.",
-    likes: 243,
+    likes: 249083,
     liked: false,
   },
   {
@@ -106,7 +106,7 @@ const posts = [
     avatar: "images/avatar-frida.png",
     post: "images/post-frida.png",
     comment: "I paint my reality, even when it hurts a little.",
-    likes: 310,
+    likes: 310745,
     liked: false,
   },
 ];

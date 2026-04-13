@@ -219,22 +219,23 @@ background: linear-gradient(45deg,
 7. **Wait 5-12 seconds** → Random notification appears
 
 ---
+## 📁 Project Structure
 
-📁 Project Structure
 instagram-clone/
 │
-├── index.html              # Semantic HTML structure (layout & base UI)
-├── index.css               # Instagram-inspired styling & responsive design
-├── index.js                # Core app logic (feed rendering, likes, comments, localStorage)
-├── features.js             # Advanced features (stories, shuffle, notifications, dark mode)
+├── index.html # Semantic HTML structure (layout & base UI)
+├── index.css # Instagram-inspired styling & responsive design
+├── index.js # Core app logic (feed rendering, likes, comments, localStorage)
+├── features.js # Advanced features (stories, shuffle, notifications, dark mode)
 │
 └── images/
-    ├── logo.png
-    ├── avatar-vangogh.jpg
-    ├── avatar-davinci.png
-    ├── avatar-*.png        # Additional user avatars
-    ├── post-*.jpg          # Artist post images
-    └── icon-*.png          # UI icons (like, comment, DM)
+├── logo.png
+├── avatar-vangogh.jpg
+├── avatar-davinci.png
+├── avatar-.png # Additional user avatars
+├── post-.jpg # Artist post images
+└── icon-*.png # UI icons (like, comment, DM)
+
 
 ## 🚦 Getting Started
 

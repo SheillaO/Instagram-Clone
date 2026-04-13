@@ -17,3 +17,14 @@
   renderPosts();
 })();
 
+// ============================================================
+//  2. STORIES BAR
+// ============================================================
+const storyUsers = [
+    { name: "vincey1853",     avatar: "images/avatar-vangogh.jpg"  },
+    { name: "gus1819",        avatar: "images/avatar-courbet.jpg"  },
+    { name: "jd1735",         avatar: "images/avatar-ducreux.jpg"  },
+    { name: "picasso1881",    avatar: "images/avatar-picasso.png"  },
+    { name: "davinci1452",    avatar: "images/avatar-davinci.png"  },
+    { name: "fridakahlo1907", avatar: "images/avatar-frida.png"    },
+];

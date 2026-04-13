@@ -374,3 +374,38 @@ function renderPosts() {
             </button>
         </div>
     `;
+     const postsToShow = showOnlyNew ? posts.filter(p => !p.liked) : posts;
+
+    if (postsToShow.length === 0 && showOnlyNew) {
+        feed.innerHTML += `
+            <div style="text-align: center; padding: 40px 20px; color: #8E8E8E;">
+                <p style="font-size: 24px; margin-bottom: 8px;">🎉</p>
+                <p style="font-size: 16px; font-weight: 600;">You've seen everything!</p>
+                <p style="font-size: 14px;">Check back later for new content</p>
+            </div>
+        `;
+        return;
+    }
+
+    for (let post of postsToShow) {
+        const heartIcon = post.liked
+            ? "images/icon-heart-filled.png"
+            : "images/icon-heart.png";
+
+        const comments = commentsStore[post.username] || [];
+        const sentiment = analyzeSentiment(comments.map(c => c.text).join(" "));
+
+        const postHTML = `
+            <section class="post">
+                <div class="post-header">
+                    <img src="${post.avatar}" class="avatar">
+                    <div>
+                        <p class="name">
+                            ${post.name}
+                            ${post.verified ? '<span class="verified">✔</span>' : ""}
+                        </p>
+                        <p class="location">${post.location}</p>
+                    </div>
+                </div>
+
+                

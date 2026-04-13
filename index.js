@@ -618,5 +618,29 @@ function createHeartAnimation(event, username) {
     lastTap = currentTime;
 }
 
+// ---------------- POST ANALYTICS ----------------
+function showAnalytics(username) {
+    const post = posts.find(p => p.username === username);
+    if (!post) return;
 
+    const comments = commentsStore[username] || [];
+    const sentiments = comments.map(c => analyzeSentiment(c.text));
+
+    const positiveCount = sentiments.filter(s => s.sentiment.includes("Positive")).length;
+    const mixedCount = sentiments.filter(s => s.sentiment.includes("Mixed")).length;
+    const neutralCount = sentiments.filter(s => s.sentiment.includes("Neutral")).length;
+
+    const engagement = ((post.likes + comments.length) / 2).toFixed(1);
+
+    alert(
+        `📊 Analytics for ${post.name}'s post\n\n` +
+        `❤️ Likes: ${post.likes}\n` +
+        `💬 Comments: ${comments.length}\n` +
+        `📈 Engagement Score: ${engagement}\n\n` +
+        `Sentiment Breakdown:\n` +
+        `😊 Positive: ${positiveCount}\n` +
+        `😐 Mixed: ${mixedCount}\n` +
+        `😌 Neutral: ${neutralCount}`
+    );
+}
 

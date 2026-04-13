@@ -79,3 +79,9 @@ Respects user preference, persists across sessions via `localStorage`.
 - Session-based view tracking
 - Auto-advance after 3 seconds
 
+
+### 🔔 Random Notifications
+8 notification types simulate real Instagram activity:
+- Likes, comments, follows, DMs, mentions, tags
+
+---

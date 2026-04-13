@@ -231,3 +231,55 @@ function viewStory(user) {
 // Kick off stories bar
 renderStories();
  
+// ============================================================
+//  3. RANDOM NOTIFICATION POPUPS
+// ============================================================
+const notificationMessages = [
+    (user) => `${user} liked your post ❤️`,
+    (user) => `${user} started following you`,
+    (user) => `${user} commented on your photo 💬`,
+    (user) => `${user} mentioned you in a comment`,
+    (user) => `${user} sent you a DM 📩`,
+    (user) => `${user} liked your comment`,
+    (user) => `${user} and 3 others liked your post`,
+    (user) => `${user} tagged you in a photo 🏷️`,
+];
+ 
+function showNotification() {
+    const randomUser = generateRandomUsername();
+    const msgFn = notificationMessages[Math.floor(Math.random() * notificationMessages.length)];
+    const message = msgFn(randomUser);
+ 
+    const notif = document.createElement("div");
+    notif.style.cssText = `
+        position: fixed;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        background: white;
+        border: 1px solid #DBDBDB;
+        border-radius: 12px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #262626;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        z-index: 9000;
+        max-width: 320px;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        cursor: pointer;
+    `;
+ 
+    notif.innerHTML = `
+        <span style="font-size:20px;">🔔</span>
+        <span>${message}</span>
+    `;
+ 
+    notif.onclick = () => dismissNotif(notif);
+ 
+    document.body.appendChild(notif);
+ 

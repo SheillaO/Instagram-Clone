@@ -288,4 +288,19 @@ function getRandomComments() {
     }));
 }
 
+// ---------------- INIT COMMENTS ----------------
+function initComments() {
+    for (let post of posts) {
+        if (!commentsStore[post.username]) {
+            commentsStore[post.username] = getRandomComments();
+        }
+    }
 
+    try {
+        localStorage.setItem("commentsStore", JSON.stringify(commentsStore));
+    } catch (e) {
+        console.warn("Could not save to localStorage.", e);
+    }
+}
+
+initComments();

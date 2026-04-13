@@ -236,3 +236,17 @@ body {
     color: #B2DFFC;
     cursor: default;
 }
+
+/* ========== SCROLLBAR STYLING ========== */
+.comments::-webkit-scrollbar {
+    width: 4px;
+}
+
+.comments::-webkit-scrollbar-track {
+    background: #FAFAFA;
+}
+
+.comments::-webkit-scrollbar-thumb {
+    background: #DBDBDB;
+    border-radius: 4px;
+}

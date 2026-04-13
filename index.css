@@ -152,3 +152,25 @@ body {
     font-weight: 600;
     margin-right: 4px;
 }
+
+/* ========== COMMENTS SECTION ========== */
+.comments {
+    margin-top: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 14px;
+    color: #262626;
+    margin-bottom: 6px;
+    line-height: 18px;
+}
+
+.comment strong {
+    font-weight: 600;
+    margin-right: 4px;
+}

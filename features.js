@@ -35,13 +35,13 @@ const viewedStories = new Set(
 );
  
 function renderStories() {
-    // Remove any existing stories bar first
-    const existing = document.getElementById("stories-bar");
-    if (existing) existing.remove();
- 
-    const bar = document.createElement("div");
-    bar.id = "stories-bar";
-    bar.style.cssText = `
+  // Remove any existing stories bar first
+  const existing = document.getElementById("stories-bar");
+  if (existing) existing.remove();
+
+  const bar = document.createElement("div");
+  bar.id = "stories-bar";
+  bar.style.cssText = `
         background: white;
         border-bottom: 1px solid #DBDBDB;
         padding: 12px 0;
@@ -53,16 +53,16 @@ function renderStories() {
         padding-left: 16px;
         padding-right: 16px;
     `;
-    // Hide scrollbar for webkit
-    const scrollStyle = document.createElement("style");
-    scrollStyle.textContent = `#stories-bar::-webkit-scrollbar { display: none; }`;
-    document.head.appendChild(scrollStyle);
- 
-    storyUsers.forEach(user => {
-        const viewed = viewedStories.has(user.name);
- 
-        const item = document.createElement("div");
-        item.style.cssText = `
+  // Hide scrollbar for webkit
+  const scrollStyle = document.createElement("style");
+  scrollStyle.textContent = `#stories-bar::-webkit-scrollbar { display: none; }`;
+  document.head.appendChild(scrollStyle);
+
+  storyUsers.forEach((user) => {
+    const viewed = viewedStories.has(user.name);
+
+    const item = document.createElement("div");
+    item.style.cssText = `
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -70,32 +70,62 @@ function renderStories() {
             cursor: pointer;
             flex-shrink: 0;
         `;
- 
-        const ring = document.createElement("div");
 
-        ring.style.cssText = `
+    const ring = document.createElement("div");
+
+    ring.style.cssText = `
             width: 56px;
             height: 56px;
             border-radius: 50%;
             padding: 2px;
-            background: ${viewed
+            background: ${
+              viewed
                 ? "#DBDBDB"
-                : "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)"};
+                : "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)"
+            };
             display: flex;
             align-items: center;
             justify-content: center;
         `;
- 
-        const img = document.createElement("img");
-        img.src = user.avatar;
-        img.style.cssText = `
+
+    const img = document.createElement("img");
+    img.src = user.avatar;
+    img.style.cssText = `
             width: 48px;
             height: 48px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid white;
         `;
- 
-        const label = document.createElement("p");
 
-        
+    const label = document.createElement("p");
+
+    label.textContent = user.name.slice(0, 10);
+    label.style.cssText = `
+            font-size: 11px;
+            color: ${viewed ? "#8E8E8E" : "#262626"};
+            max-width: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+        `;
+
+    ring.appendChild(img);
+    item.appendChild(ring);
+    item.appendChild(label);
+
+    item.onclick = () => viewStory(user);
+
+    bar.appendChild(item);
+  });
+
+  // Insert stories bar right below the header
+  const header = document.querySelector("header.hero");
+  if (header && header.nextSibling) {
+    header.parentNode.insertBefore(bar, header.nextSibling);
+  } else {
+    document.body.prepend(bar);
+  }
+}
+ 

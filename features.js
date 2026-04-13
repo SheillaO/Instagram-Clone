@@ -331,3 +331,64 @@ const darkStyles = `
     #dark-toggle            { background: #1C1C1C !important; border-color: #444 !important; color: #FAFAFA !important; }
     div[style*="background: white"]  { background: #1C1C1C !important; }
 `;
+
+let darkStyleEl = null;
+let darkMode = localStorage.getItem("darkMode") === "true";
+ 
+function applyDarkMode() {
+    if (darkMode) {
+        if (!darkStyleEl) {
+            darkStyleEl = document.createElement("style");
+            darkStyleEl.id = "dark-mode-styles";
+            darkStyleEl.textContent = darkStyles;
+            document.head.appendChild(darkStyleEl);
+        }
+    } else {
+        if (darkStyleEl) {
+            darkStyleEl.remove();
+            darkStyleEl = null;
+        }
+    }
+    const btn = document.getElementById("dark-toggle");
+    if (btn) btn.textContent = darkMode ? "☀️" : "🌙";
+}
+ 
+function toggleDarkMode() {
+    darkMode = !darkMode;
+    localStorage.setItem("darkMode", darkMode);
+    applyDarkMode();
+}
+ 
+// Inject the toggle button into the header
+function injectDarkModeButton() {
+    const container = document.querySelector(".hero .container");
+    if (!container) return;
+ 
+    container.style.display = "flex";
+    container.style.justifyContent = "space-between";
+    container.style.alignItems = "center";
+ 
+    const btn = document.createElement("button");
+    btn.id = "dark-toggle";
+    btn.textContent = darkMode ? "☀️" : "🌙";
+    btn.title = "Toggle dark mode";
+    btn.onclick = toggleDarkMode;
+    btn.style.cssText = `
+        background: #EFEFEF;
+        border: 1px solid #DBDBDB;
+        border-radius: 8px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease;
+    `;
+ 
+    container.appendChild(btn);
+}
+ 
+injectDarkModeButton();
+applyDarkMode(); // Apply on load if dark mode was previously saved

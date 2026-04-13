@@ -246,12 +246,15 @@ const notificationMessages = [
 ];
  
 function showNotification() {
-    const randomUser = generateRandomUsername();
-    const msgFn = notificationMessages[Math.floor(Math.random() * notificationMessages.length)];
-    const message = msgFn(randomUser);
- 
-    const notif = document.createElement("div");
-    notif.style.cssText = `
+  const randomUser = generateRandomUsername();
+  const msgFn =
+    notificationMessages[
+      Math.floor(Math.random() * notificationMessages.length)
+    ];
+  const message = msgFn(randomUser);
+
+  const notif = document.createElement("div");
+  notif.style.cssText = `
         position: fixed;
         top: 70px;
         left: 50%;
@@ -273,13 +276,58 @@ function showNotification() {
         transition: opacity 0.3s ease, transform 0.3s ease;
         cursor: pointer;
     `;
- 
-    notif.innerHTML = `
+
+  notif.innerHTML = `
         <span style="font-size:20px;">🔔</span>
         <span>${message}</span>
     `;
+
+  notif.onclick = () => dismissNotif(notif);
+
+  document.body.appendChild(notif);
+
+  // Animate in
+  requestAnimationFrame(() => {
+    notif.style.opacity = "1";
+    notif.style.transform = "translateX(-50%) translateY(0)";
+  });
+
+  // Auto dismiss after 3.5s
+  setTimeout(() => dismissNotif(notif), 3500);
+}
+
+function dismissNotif(notif) {
+  notif.style.opacity = "0";
+  notif.style.transform = "translateX(-50%) translateY(-20px)";
+  setTimeout(() => notif.remove(), 300);
+}
+
+// Show a notification between 5–12 seconds randomly, then keep repeating
+function scheduleNextNotification() {
+    const delay = Math.floor(Math.random() * 7000) + 5000; // 5–12 seconds
+    setTimeout(() => {
+        showNotification();
+        scheduleNextNotification();
+    }, delay);
+}
  
-    notif.onclick = () => dismissNotif(notif);
+scheduleNextNotification();
  
-    document.body.appendChild(notif);
  
+// ============================================================
+//  4. DARK MODE TOGGLE
+// ============================================================
+const darkStyles = `
+    body                    { background-color: #000 !important; color: #FAFAFA !important; }
+    .hero                   { background: #000 !important; border-color: #262626 !important; }
+    .post                   { background: #1C1C1C !important; border-color: #262626 !important; }
+    .post-header .name      { color: #FAFAFA !important; }
+    .likes, .caption        { color: #FAFAFA !important; }
+    .comment                { color: #FAFAFA !important; }
+    .comment-box            { border-color: #333 !important; }
+    .comment-box input      { color: #FAFAFA !important; background: transparent !important; }
+    .comment-box input::placeholder { color: #737373 !important; }
+    #stories-bar            { background: #000 !important; border-color: #262626 !important; }
+    #dark-toggle            { background: #1C1C1C !important; border-color: #444 !important; color: #FAFAFA !important; }
+    div[style*="background: white"]  { background: #1C1C1C !important; }
+`;
